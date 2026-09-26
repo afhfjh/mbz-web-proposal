@@ -4,6 +4,9 @@ Functional, navigable website proposal for **MBZ Miami USA Corp.** (vehicle expo
 
 Static site (HTML + CSS + vanilla JS, no build step). Ready for GitHub Pages.
 
+## Languages
+English / Spanish switch in the header (EN | ES). The site picks Spanish automatically when the browser is in Spanish and remembers the visitor's choice. Translations live in the `ES` dictionary inside `index.html`, keyed by the English text; any string missing from the dictionary stays in English.
+
 ## Pages (hash routing)
 | Route | Content |
 |---|---|
@@ -28,7 +31,6 @@ Settings → Pages → Source: `Deploy from a branch` → Branch `main` / `(root
 - Estimator rates and transit times are **sample figures**.
 - Tracking data is a **sample shipment**; to be connected to the MBZ system (React + PostgreSQL + ECS on AWS).
 - Confirm services (RoRo, auction pickup, insurance), destinations, email and WhatsApp number.
-- Spanish version (EN/ES switch).
 
 ## Structure
 ```

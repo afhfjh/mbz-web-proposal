@@ -50,8 +50,13 @@ p{margin:0}
 .nav ul a:hover{color:var(--on-dark)}
 .nav ul a[aria-current="page"]{color:var(--on-dark);border-bottom-color:var(--amber)}
 .nav .btn{padding:11px 16px;font-size:14px}
-.menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.25);color:var(--on-dark);font:500 13px var(--mono);padding:8px 12px;border-radius:2px;cursor:pointer}
+.menu-btn{display:none;margin-left:0;background:none;border:1px solid rgba(255,255,255,.25);color:var(--on-dark);font:500 13px var(--mono);padding:8px 12px;border-radius:2px;cursor:pointer}
+.lang{display:flex;border:1px solid rgba(255,255,255,.25);border-radius:2px}
+.lang button{background:none;border:0;color:var(--on-dark-2);font:500 12px var(--mono);letter-spacing:.08em;padding:8px 10px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--on-dark);color:var(--ink)}
 @media (max-width:900px){
+  .lang{margin-left:auto}
+  .menu-btn{order:5;margin-left:10px}
   .nav ul{display:none;position:absolute;left:0;right:0;top:66px;flex-direction:column;background:var(--ink);padding:8px 16px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
   .nav ul.open{display:flex}
   .nav ul a{padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
@@ -282,6 +287,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
       <li><a href="#contact">Contact</a></li>
       <li><a href="#quote">Get a quote</a></li>
     </ul>
+    <div class="lang" role="group" aria-label="Language / Idioma"><button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button><button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button></div>
     <a class="btn btn-amber cta-top" href="#quote">Get a quote <span class="arrow">→</span></a>
   </div>
 </header>
@@ -292,7 +298,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
   <section class="hero">
     <img class="poster" src="poster.jpg" alt="">
     <video id="heroVid" src="ship.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-    <button class="vid-toggle" id="vidToggle" aria-label="Pause background video">PAUSE</button>
+    <button class="vid-toggle" id="vidToggle" data-noi18n aria-label="Pause background video">PAUSE</button>
     <div class="wrap">
       <p class="eyebrow" style="color:var(--amber)">Vehicle export · Ocean freight · Miami</p>
       <h1>Miami<br>to the <em>world.</em></h1>
@@ -435,7 +441,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
       <div class="track-grid">
         <div class="panel">
           <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center">
-            <h3>Booking <span id="bkId">MBZ-2609-0417</span></h3>
+            <h3>Booking <span id="bkId" data-noi18n>MBZ-2609-0417</span></h3>
             <span class="status-pill"><i></i>At sea</span>
           </div>
           <div class="kv">
@@ -517,13 +523,13 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
           </div>
         </fieldset>
         <button class="btn btn-amber" type="submit">Request firm quote <span class="arrow">→</span></button>
-        <div id="qMsg" hidden></div>
+        <div id="qMsg" data-noi18n hidden></div>
       </form>
       <aside class="estimate" aria-live="polite">
         <p class="eyebrow">Estimated range</p>
-        <div class="range" id="range">$0</div>
-        <p style="color:var(--on-dark-2)" id="transit">Transit time</p>
-        <dl id="breakdown"></dl>
+        <div class="range" id="range" data-noi18n>$0</div>
+        <p style="color:var(--on-dark-2)" id="transit" data-noi18n>Transit time</p>
+        <dl id="breakdown" data-noi18n></dl>
         <p class="fine">Sample figures for this proposal. MBZ sets real rates; final price depends on vessel schedule, vehicle size and destination charges.</p>
       </aside>
     </div>
@@ -567,7 +573,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
   <section class="band white">
     <div class="wrap">
       <div class="contact-grid">
-        <div><span class="eyebrow">Phone &amp; WhatsApp</span><b id="ph">+1 305-628-4227</b><p>English and Spanish</p><button class="copy" data-copy="+1 305-628-4227">COPY NUMBER</button></div>
+        <div><span class="eyebrow">Phone &amp; WhatsApp</span><b id="ph">+1 305-628-4227</b><p>English and Spanish</p><button class="copy" data-noi18n data-copy="+1 305-628-4227" data-label="COPY NUMBER">COPY NUMBER</button></div>
         <div><span class="eyebrow">Warehouse</span><b>16335 NW 48th Ave #1</b><p>Miami Gardens, FL 33014</p><p style="margin-top:12px"><a href="https://www.google.com/maps/search/?api=1&query=16335+NW+48th+Ave+%231+Miami+Gardens+FL+33014" style="font:500 13px var(--mono)">Open in Google Maps →</a></p></div>
         <div><span class="eyebrow">Hours</span><b>Mon–Fri<br>9 am–5 pm</b><p>Eastern Time. Closed weekends.</p></div>
       </div>
@@ -598,6 +604,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
             <tr><td>Trust</td><td>Anonymous testimonials</td><td>Years, team size, carrier logos</td><td>FMC license, since 2008, BBB A+, 72-hour CBP process</td></tr>
             <tr><td>Process</td><td>Not explained</td><td>Spread across service pages</td><td>Four steps on the homepage</td></tr>
             <tr><td>Contact</td><td>Phone and map</td><td>Phone, email, WhatsApp</td><td>Floating WhatsApp, copyable phone, hours</td></tr>
+            <tr><td>Languages</td><td>Mixed English and Spanish</td><td>English only</td><td>English and Spanish, one-click switch</td></tr>
             <tr><td>Mobile</td><td>Basic</td><td>Heavy pages</td><td>Mobile-first, light pages</td></tr>
           </tbody>
         </table>
@@ -609,7 +616,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
       <div class="sec-head"><div><p class="eyebrow">Next steps</p><h2>From proposal to live site</h2></div><p>The site and the new inventory and shipment system share one backend, so tracking and quotes use real data.</p></div>
       <ol class="num-list">
         <li><span>01</span><div><b>Confirm content with MBZ</b><p>Services offered (RoRo, insurance, auction purchase), main destinations, email, WhatsApp number, carrier partners, real photos.</p></div></li>
-        <li><span>02</span><div><b>Spanish version</b><p>Full EN/ES site for Latin American clients, with a language switch in the header.</p></div></li>
+        <li><span>02</span><div><b>Languages for search engines</b><p>The EN/ES switch works today. Production adds separate /en/ and /es/ addresses so Google indexes both languages.</p></div></li>
         <li><span>03</span><div><b>Connect tracking and quotes</b><p>React front end on AWS, reading the PostgreSQL database and ECS API of the new MBZ system.</p></div></li>
         <li><span>04</span><div><b>Launch on a new domain</b><p>Own domain, SEO for "car shipping from Miami", Google Business profile updated to freight forwarding.</p></div></li>
       </ol>
@@ -637,6 +644,158 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
 
 <script>
 (function(){
+const ES={
+"Miami USA":"Miami USA","Ocean Freight":"Carga marítima","Menu":"Menú",
+"Services":"Servicios","Track":"Rastrear","About":"Nosotros","Contact":"Contacto","Get a quote":"Cotizar",
+"Vehicle export · Ocean freight · Miami":"Exportación de vehículos · Carga marítima · Miami",
+"Miami":"De Miami","to the":"al","world.":"mundo.",
+"We ship cars, trucks, motorcycles and cargo from our Miami Gardens facility to ports worldwide, in containers or RoRo. You see every step online, from pickup to arrival.":"Enviamos carros, camionetas, motos y carga desde nuestra bodega en Miami Gardens a puertos de todo el mundo, en contenedor o RoRo. Usted ve cada paso en línea, desde la recogida hasta la llegada.",
+"Estimate my shipment":"Calcular mi envío","Track a shipment":"Rastrear un envío",
+"FMC OTI License":"Licencia FMC OTI","Warehouse":"Bodega","Port of loading":"Puerto de carga","Find it":"Buscar",
+"Exporting from Miami since":"Exportando desde Miami desde","Export shipments on public record":"Envíos de exportación en registros públicos",
+"Better Business Bureau rating":"Calificación del Better Business Bureau","Title filed with CBP before every sailing":"Título radicado ante CBP antes de cada zarpe",
+"How it works":"Cómo funciona","Four steps.":"Cuatro pasos.","One point of contact.":"Un solo contacto.",
+"You hand us the keys and the title. We handle the pickup, the paperwork, the loading and the sailing, and you watch it happen from your phone.":"Usted nos entrega las llaves y el título. Nosotros nos encargamos de la recogida, los trámites, el cargue y el embarque, y usted lo sigue todo desde su celular.",
+"STEP 01":"PASO 01","STEP 02":"PASO 02","STEP 03":"PASO 03","STEP 04":"PASO 04",
+"Pickup":"Recogida",
+"We collect the vehicle from the auction, dealer or your door anywhere in the US, or you drop it at our warehouse.":"Recogemos el vehículo en la subasta, el concesionario o su casa en cualquier parte de EE. UU., o usted lo deja en nuestra bodega.",
+"Photos on arrival":"Fotos al llegar","Title & customs":"Título y aduana",
+"We validate the title and file it with U.S. Customs 72 hours before export, plus the AES/EEI filing.":"Validamos el título y lo radicamos ante la Aduana de EE. UU. 72 horas antes de la exportación, junto con la declaración AES/EEI.",
+"Load & seal":"Cargue y sello",
+"Vehicles are strapped and blocked inside 20' or 40' containers at our facility, or delivered to the RoRo terminal.":"Los vehículos se aseguran y bloquean dentro de contenedores de 20' o 40' en nuestra bodega, o se entregan en la terminal RoRo.",
+"Seal no. in your portal":"N.º de sello en su portal","Sail & deliver":"Zarpe y entrega",
+"You follow the vessel to the port of discharge and receive the Bill of Lading and release documents online.":"Usted sigue el buque hasta el puerto de destino y recibe en línea el Bill of Lading y los documentos de liberación.",
+"Live ETA":"ETA en vivo","Client portal":"Portal de clientes","Your cargo,":"Su carga,","always visible.":"siempre visible.",
+"Most forwarders send you a PDF and go quiet. With MBZ you get a live view of each vehicle, its documents and its container.":"La mayoría de los agentes de carga le envían un PDF y desaparecen. Con MBZ usted ve en vivo cada vehículo, sus documentos y su contenedor.",
+"Arrival photos of every vehicle at our warehouse":"Fotos de cada vehículo al llegar a nuestra bodega",
+"Title, AES and Bill of Lading status in one place":"Estado del título, AES y Bill of Lading en un solo lugar",
+"Container, seal and vessel details with ETA":"Datos del contenedor, sello y buque con ETA",
+"Notifications by email and WhatsApp":"Notificaciones por correo y WhatsApp","See a live example":"Ver un ejemplo en vivo",
+"What we ship":"Qué enviamos","Built around vehicles, ready for anything that fits in a container.":"Especialistas en vehículos, listos para todo lo que quepa en un contenedor.",
+"SVC 01":"SERV 01","SVC 02":"SERV 02","SVC 03":"SERV 03","SVC 04":"SERV 04","SVC 05":"SERV 05","SVC 06":"SERV 06",
+"Vehicle export":"Exportación de vehículos",
+"Cars, SUVs, pickups and motorcycles shipped in shared or exclusive containers.":"Carros, SUV, pickups y motos en contenedor compartido o exclusivo.",
+"Shared 40' HC":"40' HC compartido","Exclusive 20' / 40'":"20' / 40' exclusivo","Motorcycles":"Motos","Quote this →":"Cotizar →",
+"RoRo shipping":"Envío RoRo","Roll-on/roll-off for running vehicles, trucks and heavy equipment.":"Roll-on/roll-off para vehículos que encienden, camiones y maquinaria pesada.",
+"Trucks":"Camiones","Machinery":"Maquinaria","Oversize":"Sobredimensionado",
+"Inland transport":"Transporte terrestre","Towing and carrier pickup from auctions, dealers and homes across the US to our warehouse.":"Grúa y camión niñera desde subastas, concesionarios y casas en todo EE. UU. hasta nuestra bodega.",
+"Auctions":"Subastas","Dealers":"Concesionarios","Door pickup":"Recogida a domicilio",
+"Export documents":"Documentos de exportación","Title validation, CBP 72-hour filing, AES/EEI, dock receipt and Bill of Lading.":"Validación del título, radicación ante CBP con 72 horas, AES/EEI, dock receipt y Bill of Lading.",
+"All services":"Todos los servicios","Know the cost in 30 seconds.":"Conozca el costo en 30 segundos.",
+"No sign-up. A specialist confirms within one business day.":"Sin registrarse. Un especialista confirma en un día hábil.","Start my estimate":"Calcular ahora",
+"Door to port.":"De la puerta al puerto.","Port to port.":"De puerto a puerto.",
+"One licensed forwarder for the whole trip: inland transport, documentation, loading and ocean freight.":"Un solo agente de carga con licencia para todo el trayecto: transporte terrestre, documentos, cargue y flete marítimo.",
+"Loading facility":"Bodega de cargue","Our Miami Gardens warehouse receives, photographs, stores and loads your cargo.":"Nuestra bodega en Miami Gardens recibe, fotografía, almacena y carga su mercancía.",
+"Photos":"Fotos","Storage":"Almacenamiento","Blocking & bracing":"Bloqueo y amarre",
+"Parts & general cargo":"Repuestos y carga general","Auto parts, tires and general merchandise, consolidated with your vehicles or on their own.":"Autopartes, llantas y mercancía general, consolidadas con sus vehículos o por separado.",
+"Parts":"Repuestos","Tires":"Llantas","Consolidation":"Consolidación",
+"Container or RoRo?":"¿Contenedor o RoRo?","Pick the right method":"Elija el método correcto",
+"A quick guide. Our team recommends the best option for each vehicle and destination.":"Una guía rápida. Nuestro equipo le recomienda la mejor opción para cada vehículo y destino.",
+"Shared container":"Contenedor compartido","Exclusive container":"Contenedor exclusivo",
+"Best for":"Ideal para","1 to 3 cars, lowest cost":"1 a 3 carros, el menor costo",
+"Several cars, high-value units, cars with cargo inside":"Varios carros, unidades de alto valor, carros con carga adentro",
+"Running vehicles, trucks, heavy equipment":"Vehículos que encienden, camiones, maquinaria pesada",
+"Capacity":"Capacidad","Your space in a 40' HC with other clients":"Su espacio en un 40' HC con otros clientes",
+"20' (1 to 2 cars) or 40' HC (up to 4 cars)":"20' (1 a 2 carros) o 40' HC (hasta 4 carros)",
+"Driven on board, no size limit by container":"Entra rodando al buque, sin límite de tamaño de contenedor",
+"Personal items":"Artículos personales","Not allowed":"No permitidos","Allowed with inventory":"Permitidos con inventario",
+"Loading":"Cargue","At our Miami Gardens facility, photographed and sealed":"En nuestra bodega de Miami Gardens, fotografiado y sellado",
+"Delivered by us to the RoRo terminal":"Lo entregamos nosotros en la terminal RoRo",
+"Ready to ship?":"¿Listo para enviar?","Estimate first, commit later.":"Primero calcule, después decide.","Get my estimate":"Calcular mi envío",
+"Where is":"¿Dónde está","my cargo?":"mi carga?",
+"Search by booking number, VIN or container number. Clients see photos and documents after signing in.":"Busque por número de booking, VIN o número de contenedor. Los clientes ven fotos y documentos al iniciar sesión.",
+"Tracking number":"Número de rastreo","Booking":"Booking","At sea":"En el mar","Vehicle":"Vehículo","Container":"Contenedor","Vessel":"Buque",
+"Oct 12, 2026":"12 oct 2026","40' HC · 4 units":"40' HC · 4 unidades",
+"Picked up":"Recogido","Auction yard, Orlando FL · towed by MBZ":"Patio de subasta, Orlando FL · remolcado por MBZ",
+"Received at warehouse":"Recibido en bodega","Miami Gardens, FL · 24 photos added":"Miami Gardens, FL · 24 fotos agregadas",
+"Title cleared by CBP":"Título aprobado por CBP","Filed Sep 10 · AES ITN issued":"Radicado el 10 sep · ITN de AES emitido",
+"Loaded and sealed":"Cargado y sellado","Container MBZU 481920 7 · Seal 0937714":"Contenedor MBZU 481920 7 · Sello 0937714",
+"Departed Port Miami":"Zarpó de Port Miami","M/V Río Paraná Star, voyage 26S":"M/V Río Paraná Star, viaje 26S",
+"TODAY":"HOY","At sea, on schedule":"En el mar, a tiempo","Next port: Santos, BR":"Próximo puerto: Santos, BR",
+"Arrival Montevideo":"Llegada a Montevideo","Release documents sent to consignee":"Documentos de liberación enviados al consignatario",
+"SEP 08":"08 SEP","SEP 09":"09 SEP","SEP 13":"13 SEP","SEP 15":"15 SEP","SEP 18":"18 SEP","OCT 12":"12 OCT",
+"Documents":"Documentos","Vehicle title (original)":"Título del vehículo (original)","Cleared":"Aprobado",
+"AES / EEI filing":"Declaración AES / EEI","Filed":"Radicado","Dock receipt":"Dock receipt","Ready":"Listo",
+"Issued":"Emitido","Telex release":"Telex release","On arrival":"Al llegar","Arrival photos":"Fotos de llegada","FRONT":"FRENTE","REAR":"ATRÁS",
+"Sample shipment for this proposal. In production, this view connects to the MBZ client portal.":"Envío de ejemplo para esta propuesta. En producción, esta vista se conecta al portal de clientes de MBZ.",
+"Estimate":"Calcule","in 30 seconds.":"en 30 segundos.",
+"Choose the vehicle, method and destination. You get a price range now and a firm quote from our team within one business day.":"Elija el vehículo, el método y el destino. Recibe un rango de precio ahora y una cotización firme de nuestro equipo en un día hábil.",
+"What are you shipping?":"¿Qué va a enviar?","Car / sedan":"Carro / sedán","SUV / pickup":"SUV / pickup","Motorcycle":"Moto","Truck / oversize":"Camión / sobredimensionado",
+"Shipping method":"Método de envío","Destination region":"Región de destino",
+"Central America & Caribbean":"Centroamérica y Caribe","South America":"Suramérica","Europe":"Europa","West Africa":"África Occidental","Middle East":"Medio Oriente","Asia":"Asia",
+"I drop it off":"Yo lo llevo a la bodega","Pickup in Florida":"Recogida en Florida","Pickup elsewhere in US":"Recogida en otro estado",
+"Your details":"Sus datos","Name":"Nombre","Email or WhatsApp":"Correo o WhatsApp","Year, make, model":"Año, marca, modelo",
+"Destination port or city":"Puerto o ciudad de destino","Request firm quote":"Solicitar cotización firme","Estimated range":"Rango estimado",
+"Sample figures for this proposal. MBZ sets real rates; final price depends on vessel schedule, vehicle size and destination charges.":"Cifras de ejemplo para esta propuesta. MBZ define las tarifas reales; el precio final depende del itinerario del buque, el tamaño del vehículo y los cargos en destino.",
+"About MBZ":"Sobre MBZ","A Miami":"Un agente de carga","forwarder since 2008.":"en Miami desde 2008.",
+"Small enough to answer your call. Licensed and experienced enough to move your cargo right.":"Lo bastante cercanos para contestarle el teléfono. Con la licencia y la experiencia para mover bien su carga.",
+"MBZ Miami USA Corp. is a licensed ocean transportation intermediary based in Miami Gardens, Florida. For more than fifteen years we have exported vehicles, trucks, motorcycles, parts and general cargo from South Florida, with a strong focus on Latin America.":"MBZ Miami USA Corp. es un intermediario de transporte marítimo con licencia, ubicado en Miami Gardens, Florida. Por más de quince años hemos exportado vehículos, camiones, motos, repuestos y carga general desde el sur de la Florida, con un fuerte enfoque en Latinoamérica.",
+"Our clients are dealers, importers and families who need a vehicle to arrive complete, with its papers in order. We treat each unit as if it were our own: photographed on arrival, secured by our own crew, and followed until it is released at destination.":"Nuestros clientes son concesionarios, importadores y familias que necesitan que su vehículo llegue completo y con los papeles en regla. Tratamos cada unidad como si fuera nuestra: fotografiada al llegar, asegurada por nuestro propio equipo y con seguimiento hasta su liberación en destino.",
+"License":"Licencia","Licensed by the Federal Maritime Commission as an ocean transportation intermediary.":"Licenciados por la Federal Maritime Commission como intermediario de transporte marítimo.",
+"Facility":"Instalaciones","Our own warehouse and loading dock, 20 minutes from Port Miami.":"Bodega y muelle de cargue propios, a 20 minutos de Port Miami.",
+"Reputation":"Reputación","A+ BBB rating":"Calificación A+ en BBB","Rated A+ by the Better Business Bureau.":"Calificación A+ del Better Business Bureau.",
+"Talk to a person.":"Hable con una persona.","+1 305-628-4227 · Mon–Fri 9 am–5 pm ET":"+1 305-628-4227 · Lun–Vie 9 am–5 pm (hora del Este)","Contact us":"Contáctenos",
+"Come by":"Visítenos","or call.":"o llámenos.",
+"Drop-offs Monday to Friday. Call ahead and we'll have the paperwork ready.":"Recibimos vehículos de lunes a viernes. Llame antes y tendremos los papeles listos.",
+"Phone & WhatsApp":"Teléfono y WhatsApp","English and Spanish":"Inglés y español","COPY NUMBER":"COPIAR NÚMERO",
+"Open in Google Maps →":"Abrir en Google Maps →","Hours":"Horario","Mon–Fri":"Lun–Vie","Eastern Time. Closed weekends.":"Hora del Este. Cerrado fines de semana.",
+"Design proposal · September 2026":"Propuesta de diseño · Septiembre 2026","Why this":"Por qué este","redesign.":"rediseño.",
+"A comparison of the current MBZ site, the main competitor (ATI Container Services) and this proposal. Prepared by Andres Holguin.":"Comparación entre el sitio actual de MBZ, el principal competidor (ATI Container Services) y esta propuesta. Preparado por Andres Holguin.",
+"Side by side":"Lado a lado","Where we win":"Dónde ganamos",
+"ATI's site is complete but dense. The current MBZ page presents the company as a car dealer, with no mention of shipping. This proposal fixes that and goes further.":"El sitio de ATI es completo pero recargado. La página actual de MBZ presenta a la empresa como un concesionario de carros, sin mencionar los envíos. Esta propuesta corrige eso y va más allá.",
+"Area":"Aspecto","Current MBZ site":"Sitio actual de MBZ","ATI (competitor)":"ATI (competidor)","MBZ proposal":"Propuesta MBZ",
+"Message":"Mensaje","Describes MBZ as a \"luxury car dealer\"":"Describe a MBZ como \"luxury car dealer\"",
+"\"International Shipping Company\", generic":"\"International Shipping Company\", genérico",
+"\"Miami to the world\": vehicle export, clear in 3 seconds":"\"De Miami al mundo\": exportación de vehículos, claro en 3 segundos",
+"First impression":"Primera impresión","Auto-generated template, Street View photo":"Plantilla automática, foto de Street View",
+"Stock sliders, WordPress/Elementor":"Sliders genéricos, WordPress/Elementor","Full-screen ship video, minimal layout":"Video del buque a pantalla completa, diseño minimalista",
+"Tracking":"Rastreo","None":"No tiene","Link to an external login":"Enlace a un login externo",
+"Search on the homepage, timeline, documents and photos":"Búsqueda en el inicio, línea de tiempo, documentos y fotos",
+"Pricing":"Precios","Quote form only":"Solo formulario de cotización","Instant estimate plus firm quote request":"Estimado instantáneo más solicitud de cotización firme",
+"Trust":"Confianza","Anonymous testimonials":"Testimonios anónimos","Years, team size, carrier logos":"Años, tamaño del equipo, logos de navieras",
+"FMC license, since 2008, BBB A+, 72-hour CBP process":"Licencia FMC, desde 2008, BBB A+, proceso CBP de 72 horas",
+"Process":"Proceso","Not explained":"No se explica","Spread across service pages":"Repartido entre páginas de servicios","Four steps on the homepage":"Cuatro pasos en el inicio",
+"Phone and map":"Teléfono y mapa","Phone, email, WhatsApp":"Teléfono, correo, WhatsApp","Floating WhatsApp, copyable phone, hours":"WhatsApp flotante, teléfono copiable, horario",
+"Mobile":"Móvil","Basic":"Básico","Heavy pages":"Páginas pesadas","Mobile-first, light pages":"Pensado para móvil, páginas livianas",
+"Languages":"Idiomas","English only":"Solo inglés","Mixed English and Spanish":"Inglés y español mezclados","English and Spanish, one-click switch":"Inglés y español, cambio con un clic",
+"Next steps":"Próximos pasos","From proposal to live site":"De la propuesta al sitio real",
+"The site and the new inventory and shipment system share one backend, so tracking and quotes use real data.":"El sitio y el nuevo sistema de inventario y embarques comparten el mismo backend, así que el rastreo y las cotizaciones usan datos reales.",
+"Confirm content with MBZ":"Confirmar contenido con MBZ",
+"Services offered (RoRo, insurance, auction purchase), main destinations, email, WhatsApp number, carrier partners, real photos.":"Servicios ofrecidos (RoRo, seguro, compra en subastas), destinos principales, correo, número de WhatsApp, navieras aliadas, fotos reales.",
+"Languages for search engines":"Idiomas para buscadores",
+"The EN/ES switch works today. Production adds separate /en/ and /es/ addresses so Google indexes both languages.":"El cambio EN/ES ya funciona. En producción se agregan direcciones /en/ y /es/ para que Google indexe ambos idiomas.",
+"Connect tracking and quotes":"Conectar rastreo y cotizaciones",
+"React front end on AWS, reading the PostgreSQL database and ECS API of the new MBZ system.":"Front end en React sobre AWS, leyendo la base de datos PostgreSQL y la API en ECS del nuevo sistema de MBZ.",
+"Launch on a new domain":"Lanzar en un dominio nuevo",
+"Own domain, SEO for \"car shipping from Miami\", Google Business profile updated to freight forwarding.":"Dominio propio, SEO para \"envío de carros desde Miami\", perfil de Google Business actualizado a agente de carga.",
+"Licensed ocean freight forwarder for vehicles and cargo. FMC OTI #25293.":"Agente de carga marítima con licencia para vehículos y mercancía. FMC OTI #25293.",
+"Company":"Empresa","Design proposal":"Propuesta de diseño","Clients":"Clientes","Visit":"Visítenos","Mon–Fri 9 am–5 pm":"Lun–Vie 9 am–5 pm",
+"MIAMI → WORLD":"MIAMI → MUNDO","© 2026 MBZ Miami USA Corp.":"© 2026 MBZ Miami USA Corp.","Design proposal · not the live site":"Propuesta de diseño · no es el sitio oficial",
+"WhatsApp us":"Escríbanos","Proposal notes":"Notas de la propuesta",
+"PH:Booking no., VIN or container no.":"N.º de booking, VIN o contenedor","PH:Full name":"Nombre completo","PH:you@email.com":"usted@correo.com",
+/* dynamic */
+"PAUSE":"PAUSA","PLAY":"REPRODUCIR","COPIED":"COPIADO","SELECTED":"SELECCIONADO",
+"Ocean freight":"Flete marítimo","Inland pickup":"Recogida terrestre","Destination charges":"Cargos en destino","Quoted":"Se cotiza",
+"Transit":"Tránsito","days from Port Miami":"días desde Port Miami",
+"Add your name and an email or WhatsApp number so we can send the quote.":"Escriba su nombre y un correo o número de WhatsApp para enviarle la cotización.",
+"Thanks,":"Gracias,",
+"In the live site this request goes to the MBZ quote desk and a specialist replies within one business day.":"En el sitio real esta solicitud llega al equipo de cotizaciones de MBZ y un especialista responde en un día hábil.",
+"Pause background video":"Pausar video de fondo","Play background video":"Reproducir video de fondo"
+};
+
+  let LANG="en";
+  const T=k=>LANG==="es"&&ES[k]!==undefined?ES[k]:k;
+  function tr(root){
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentNode;return /SCRIPT|STYLE/.test(p.nodeName)||p.closest("[data-noi18n]")?2:1}});
+    let n;while(n=w.nextNode()){
+      if(n.__en===undefined)n.__en=n.nodeValue;
+      const raw=n.__en,key=raw.trim().replace(/\s+/g," ");if(!key)continue;
+      const m=raw.match(/^(\s*)[\s\S]*?(\s*)$/);
+      const out=LANG==="es"&&ES[key]!==undefined?m[1]+ES[key]+m[2]:raw;
+      if(n.nodeValue!==out)n.nodeValue=out;
+    }
+    root.querySelectorAll("[placeholder]").forEach(e=>{if(e.__ph===undefined)e.__ph=e.placeholder;const k="PH:"+e.__ph;e.placeholder=LANG==="es"&&ES[k]?ES[k]:e.__ph});
+  }
   /* ---------- services data ---------- */
   const SERVICES=[
     {code:"01",t:"Vehicle export",d:"Cars, SUVs, pickups and motorcycles shipped in shared or exclusive containers.",tags:["Shared 40' HC","Exclusive 20' / 40'","Motorcycles"]},
@@ -670,7 +829,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
   /* ---------- video ---------- */
   let paused=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const vt=document.getElementById("vidToggle");
-  function setVid(){if(paused){vid.pause();vt.textContent="PLAY";vt.setAttribute("aria-label","Play background video")}else{vid.play().catch(()=>{});vt.textContent="PAUSE";vt.setAttribute("aria-label","Pause background video")}}
+  function setVid(){if(paused){vid.pause();vt.textContent=T("PLAY");vt.setAttribute("aria-label",T("Play background video"))}else{vid.play().catch(()=>{});vt.textContent=T("PAUSE");vt.setAttribute("aria-label",T("Pause background video"))}}
   vt.addEventListener("click",()=>{paused=!paused;setVid()});
   setVid();
 
@@ -707,26 +866,40 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
     const d=g("dst"),base=d[3][0]*g("veh")[2]*g("met")[2],pick=g("pck")[2],docs=175;
     const lo=base+pick+docs,hi=lo*1.18;
     document.getElementById("range").innerHTML=`${money(lo)}<small> – ${money(hi)}</small>`;
-    document.getElementById("transit").textContent=`Transit ${d[3][1]}–${d[3][2]} days from Port Miami`;
+    document.getElementById("transit").textContent=`${T("Transit")} ${d[3][1]}–${d[3][2]} ${T("days from Port Miami")}`;
     document.getElementById("breakdown").innerHTML=
-      `<dt>Ocean freight · ${g("met")[1]}</dt><dd>${money(base)}</dd>`+
-      `<dt>Inland pickup</dt><dd>${pick?money(pick):"—"}</dd>`+
-      `<dt>Export documents</dt><dd>${money(docs)}</dd>`+
-      `<dt>Destination charges</dt><dd>Quoted</dd>`;
+      `<dt>${T("Ocean freight")} · ${T(g("met")[1])}</dt><dd>${money(base)}</dd>`+
+      `<dt>${T("Inland pickup")}</dt><dd>${pick?money(pick):"—"}</dd>`+
+      `<dt>${T("Export documents")}</dt><dd>${money(docs)}</dd>`+
+      `<dt>${T("Destination charges")}</dt><dd>${T("Quoted")}</dd>`;
   }
   calc();
   document.getElementById("quoteForm").addEventListener("submit",e=>{
     e.preventDefault();const m=document.getElementById("qMsg");
     const n=document.getElementById("qName"),c=document.getElementById("qContact");
-    if(!n.value.trim()||!c.value.trim()){m.className="sent";m.style.borderColor="var(--amber-d)";m.style.background="#FFF6EC";m.style.color="#6B3A0C";m.textContent="Add your name and an email or WhatsApp number so we can send the quote.";m.hidden=false;(n.value.trim()?c:n).focus();return}
-    m.removeAttribute("style");m.className="sent";m.textContent=`Thanks, ${n.value.trim().split(" ")[0]}. In the live site this request goes to the MBZ quote desk and a specialist replies within one business day.`;m.hidden=false;
+    if(!n.value.trim()||!c.value.trim()){m.className="sent";m.style.borderColor="var(--amber-d)";m.style.background="#FFF6EC";m.style.color="#6B3A0C";m.textContent=T("Add your name and an email or WhatsApp number so we can send the quote.");m.hidden=false;(n.value.trim()?c:n).focus();return}
+    m.removeAttribute("style");m.className="sent";m.textContent=`${T("Thanks,")} ${n.value.trim().split(" ")[0]}. ${T("In the live site this request goes to the MBZ quote desk and a specialist replies within one business day.")}`;m.hidden=false;
   });
 
   /* ---------- copy ---------- */
   document.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",()=>{
     const t=b.dataset.copy;
-    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent="COPIED"},()=>{const r=document.createRange();r.selectNodeContents(document.getElementById("ph"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="SELECTED"});
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent=T("COPIED")},()=>{const r=document.createRange();r.selectNodeContents(document.getElementById("ph"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent=T("SELECTED")});
   }));
+
+  /* ---------- language ---------- */
+  function setLang(l){
+    LANG=l==="es"?"es":"en";
+    document.documentElement.lang=LANG;
+    document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
+    tr(document.body);setVid();calc();
+    document.querySelectorAll("[data-label]").forEach(b=>b.textContent=T(b.dataset.label));
+    const m=document.getElementById("qMsg");m.hidden=true;
+    try{localStorage.setItem("mbz-lang",LANG)}catch(e){}
+  }
+  document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+  let saved=null;try{saved=localStorage.getItem("mbz-lang")}catch(e){}
+  setLang(saved||((navigator.language||"").toLowerCase().startsWith("es")?"es":"en"));
 
   go();
 })();

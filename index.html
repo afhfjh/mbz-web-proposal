@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="MBZ Miami USA Corp. Licensed ocean freight forwarder for vehicle export and cargo from Miami.">
 <title>MBZ Miami Freight</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -42,7 +43,10 @@ p{margin:0}
 /* ---------- NAV ---------- */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(10,22,34,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--on-dark);border-bottom:1px solid rgba(255,255,255,.07)}
 .nav .wrap{display:flex;align-items:center;gap:24px;height:66px}
-.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{height:38px;width:auto;display:block}
+footer .logo img{height:44px}
+.about-logo{height:clamp(72px,10vw,110px);width:auto;display:block}
 .logo b{font:900 28px/1 var(--display);letter-spacing:.02em}
 .logo span{font:500 10px/1.2 var(--mono);letter-spacing:.16em;color:var(--on-dark-2);text-transform:uppercase}
 .nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0}
@@ -278,7 +282,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#home" aria-label="MBZ Miami home"><b>MBZ</b><span>Miami USA<br>Ocean Freight</span></a>
+    <a class="logo" href="#home" aria-label="MBZ Miami home"><img src="logo-light.png" alt="MBZ" width="78" height="38"><span>Miami USA<br>Ocean Freight</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
     <ul id="navList">
       <li><a href="#services">Services</a></li>
@@ -547,6 +551,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
   </section>
   <section class="band white">
     <div class="wrap" style="display:grid;gap:64px">
+      <img class="about-logo" src="logo.png" alt="MBZ Miami USA Corp. logo" width="226" height="110">
       <div class="prose">
         <p>MBZ Miami USA Corp. is a licensed ocean transportation intermediary based in Miami Gardens, Florida. For more than fifteen years we have exported vehicles, trucks, motorcycles, parts and general cargo from South Florida, with a strong focus on Latin America.</p>
         <p>Our clients are dealers, importers and families who need a vehicle to arrive complete, with its papers in order. We treat each unit as if it were our own: photographed on arrival, secured by our own crew, and followed until it is released at destination.</p>
@@ -629,7 +634,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px
 <footer>
   <div class="wrap">
     <div class="top">
-      <div><a class="logo" href="#home" style="color:var(--on-dark)"><b>MBZ</b><span>Miami USA<br>Ocean Freight</span></a><p style="margin-top:16px;max-width:300px">Licensed ocean freight forwarder for vehicles and cargo. FMC OTI #25293.</p></div>
+      <div><a class="logo" href="#home" style="color:var(--on-dark)"><img src="logo-light.png" alt="MBZ" width="90" height="44"><span>Miami USA<br>Ocean Freight</span></a><p style="margin-top:16px;max-width:300px">Licensed ocean freight forwarder for vehicles and cargo. FMC OTI #25293.</p></div>
       <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#proposal">Design proposal</a></li></ul></div>
       <div><h4>Clients</h4><ul><li><a href="#track">Track a shipment</a></li><li><a href="#quote">Get a quote</a></li><li><a href="#contact">Contact</a></li></ul></div>
       <div><h4>Visit</h4><ul><li>16335 NW 48th Ave #1</li><li>Miami Gardens, FL 33014</li><li>+1 305-628-4227</li><li>Mon–Fri 9 am–5 pm</li></ul></div>
